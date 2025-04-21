@@ -1,0 +1,147 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+
+
+model Category {
+  id Int @id @default(autoincrement())
+  categoryid String @default(cuid())
+  categoryname String
+  product Product[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+
+model Product {
+  id          Int      @id @default(autoincrement())
+  produkid    String   @default(cuid())
+  produkname  String
+  price       Float
+  deskripsi   String
+  category_id Int
+  brand_id Int
+  gallery String[]
+  category    Category   @relation(fields: [category_id], references: [id], onDelete: Cascade, onUpdate: Cascade) // Field baru untuk stok produk
+  // Field baru untuk gambar produk
+  size Size[]
+  sale Int @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+
+
+model Size {
+  id Int @id @default(autoincrement())
+  sizeid String @default(cuid())
+  size String
+  stok Int
+  productid Int
+  product Product @relation(fields: [productid], references: [id])
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+
+model Account {
+  id                 String  @id @default(cuid())
+  userId             String  @map("user_id")
+  type               String
+  provider           String
+  providerAccountId  String  @map("provider_account_id")
+  refresh_token      String? @db.Text
+  access_token       String? @db.Text
+  expires_at         Int?
+  token_type         String?
+  scope              String?
+  id_token           String? @db.Text
+  session_state      String?
+ 
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+ 
+  @@unique([provider, providerAccountId])
+  @@map("accounts")
+}
+ 
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique @map("session_token")
+  userId       String   @map("user_id")
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+ 
+  @@map("sessions")
+}
+ 
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String?   @unique
+  emailVerified DateTime? @map("email_verified")
+  password String?
+  order Order[]
+  profile Profile[]
+  role String @default("user")
+  accounts      Account[]
+  sessions      Session[]
+ 
+  @@map("users")
+}
+
+model Profile {
+  id Int @id @default(autoincrement())
+  profileid String @default(cuid())
+  image String
+  phone String
+  address String
+  user_id String
+  user User @relation(fields: [user_id], references: [id])
+  Order Order[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+
+model VerificationToken {
+  identifier String
+  token      String
+  expires    DateTime
+ 
+  @@unique([identifier, token])
+  @@map("verification_tokens")
+}
+
+model Order{
+  id Int @id @default(autoincrement())
+  orderid String @default(cuid())
+  user_id String
+  product Json
+  totalproduct String
+  point String?
+  ongkir Int?
+  city String?
+  province String?
+  profile_id Int
+  total Float
+  status String @default("pending")
+  kurir String
+  estimasi String
+  user User @relation(fields: [user_id], references: [id])
+  profile Profile @relation(fields: [profile_id], references: [id])
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
