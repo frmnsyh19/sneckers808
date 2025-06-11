@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 type dataDiscover = {
   query: string;
   search: string;
+  sort: string;
   category: string;
 };
 
@@ -10,6 +11,7 @@ const Initialstate: dataDiscover = {
   query: "",
   search: "",
   category: "",
+  sort: "",
 };
 
 const DiscoverSliders = createSlice({
@@ -17,9 +19,12 @@ const DiscoverSliders = createSlice({
   initialState: Initialstate,
   reducers: {
     addSetDiscoverProduct: (state, action) => {
-      state.query = action.payload.query;
-      state.search = action.payload.search;
-      state.category = action.payload.category;
+      const { query, search, category, sort } = action.payload;
+
+      if (query !== undefined) state.query = query;
+      if (search !== undefined) state.search = search;
+      if (category !== undefined) state.category = category;
+      if (sort !== undefined) state.sort = sort;
     },
   },
 });

@@ -14,33 +14,48 @@ export const SearchNavbar: React.FC<PropsSearch> = ({
   setIsSearch,
   isSearch,
 }) => {
-  const [querys, setQuerys] = useState<string>("");
+  const [query, setQuery] = useState<string>("");
 
-  const dispacth = useDispatch();
-
+  const dispatch = useDispatch();
   const router = useRouter();
 
+  // Clear query in Redux when search is closed
   useEffect(() => {
     if (!isSearch) {
-      dispacth(addSetDiscoverProduct({ search: "" }));
+      dispatch(addSetDiscoverProduct({ search: "" }));
     }
-  }, [isSearch, dispacth]);
+  }, [isSearch, dispatch]);
 
+  // Optional: update Redux when user types (live filtering)
   useEffect(() => {
-    if (querys) {
-      dispacth(addSetDiscoverProduct({ query: querys, search: querys }));
-    }
-  }, [querys, dispacth]);
+    const delayDebounce = setTimeout(() => {
+      if (query) {
+        dispatch(addSetDiscoverProduct({ query, search: query }));
+      }
+    }, 300);
 
-  const handleLinkPageDiscover = (e: React.FormEvent) => {
+    return () => clearTimeout(delayDebounce);
+  }, [query, dispatch]);
+
+  // Submit form
+  const handleLinkPageDiscover = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    const formData = new FormData(e.currentTarget);
+    const inputQuery = formData.get("search")?.toString() ?? "";
+
+    dispatch(addSetDiscoverProduct({ query: inputQuery, search: inputQuery }));
     router.push("/discover");
   };
 
   return (
     <>
+      {/* Button Search Icon */}
       <button
-        className={`btn btn-ghost btn-circle ${isSearch ? "hidden" : "flex"}`}
+        aria-label="Open search"
+        className={`btn  btn-circle btn-ghost  hover:text-neutral ${
+          isSearch ? "hidden" : "flex"
+        }`}
         onClick={() => setIsSearch(true)}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -48,31 +63,28 @@ export const SearchNavbar: React.FC<PropsSearch> = ({
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor">
-          {" "}
           <path
             strokeLinecap="round"
             strokeLinejoin="round"
             strokeWidth="2"
             d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-          />{" "}
+          />
         </svg>
       </button>
-      {/* inputSearch */}
+
+      {/* Search Input Form */}
       <form onSubmit={handleLinkPageDiscover}>
         <label
           className={`input input-bordered flex w-full rounded-md items-center gap-2 ${
             !isSearch ? "hidden" : ""
           }`}>
           <input
+            name="search" // ✅ required for FormData
             type="text"
-            className={`grow ${
-              isSearch ? " w-[13rem] lg:w-[22rem]" : "w-full"
-            }`}
+            className={`grow ${isSearch ? "w-[13rem] lg:w-[22rem]" : "w-full"}`}
             placeholder="Search"
             onFocus={() => setIsSearch(true)}
-            onBlur={() => setQuerys("")}
-            value={querys}
-            onChange={(e) => setQuerys(e.target.value)}
+            onChange={(e) => setQuery(e.target.value)}
           />
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -86,9 +98,6 @@ export const SearchNavbar: React.FC<PropsSearch> = ({
             />
           </svg>
         </label>
-        <button className=" btn btn-primary hidden" type="submit">
-          submit
-        </button>
       </form>
     </>
   );

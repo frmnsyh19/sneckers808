@@ -18,7 +18,7 @@ export async function middleware(req: NextRequest) {
   ];
 
   // Rute yang hanya bisa diakses oleh user
-  const userRoutes = ["/", "/cart", "/checkout", "/profile"];
+  const userRoutes = ["/", "/checkout", "/profile"];
 
   // Rute yang memerlukan login
   const protectedRoutes = ["/checkout", "/sn-admin/brand"];
@@ -57,7 +57,6 @@ export const config = {
     "/sn-admin/:path*",
     "/dashboard",
     "/checkout",
-    "/cart",
     "/profile",
     "/login",
   ],

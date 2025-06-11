@@ -22,7 +22,7 @@ export const OverlayNavbar: React.FC<PropsSearch> = ({
 }) => {
   const querys = useAppSelector((state) => state.discover);
 
-  const { data, isLoading } = useFetchProductNavbar(querys.query);
+  const { data, isLoading } = useFetchProductNavbar(querys.search);
 
   return (
     <>

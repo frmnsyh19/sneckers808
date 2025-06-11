@@ -4,11 +4,11 @@ import { Crausel } from "./Crausel";
 export const Hero = () => {
   return (
     <div
-      className="hero h-[30rem] lg:h-[32rem]"
+      className="hero h-[30rem] lg:h-[32rem] rounded-2xl w-[98%]"
       style={{
         backgroundImage: "url('/bgheader.jpg')",
       }}>
-      <div className="hero-overlay  lg:h-[32rem]"></div>
+      <div className="hero-overlay rounded-2xl  lg:h-[32rem]"></div>
       <div className="hero-content h-full flex justify-start items-start  flex-col gap-2 text-neutral-content text-center">
         <div className=" lg:w-[40rem] lg:mt-10 mt-4">
           <h1 className="mb-5 text-6xl font-bold">Design & High Quality</h1>

@@ -22,6 +22,8 @@ export const CartNavbar = () => {
 
   const { data: cartItems = [], refetch: refetchCart } = useGetCart();
 
+  console.log(cartItems);
+
   const { mutate: mutateDelete } = useDeleteCart({
     onSuccess: () => {
       refetchCart();
