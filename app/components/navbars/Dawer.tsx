@@ -4,7 +4,7 @@ import React from "react";
 
 export const Dawer = () => {
   return (
-    <div className="drawer z-10 lg:hidden" data-theme="dark">
+    <div className="drawer z-10 lg:hidden">
       <input id="my-drawer" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content  bg-white">
         {/* Page content here */}
@@ -32,30 +32,27 @@ export const Dawer = () => {
           htmlFor="my-drawer"
           aria-label="close sidebar"
           className="drawer-overlay"></label>
-        <ul className="menu bg-slate-800 flex flex-col gap-2 z-50 text-base-content min-h-full w-80 p-4">
+        <ul className="menu bg-slate-100 flex flex-col gap-2 z-50 text-base-content min-h-full w-80 p-4">
           <li className="p-1 border-b border-b-gray-500">
-            <a href="" className=" text-slate-200 text-lg">
+            <a href="" className=" text-lime-600 font-semibold text-lg">
               Home
             </a>
           </li>
           <li className="p-1 border-b border-b-gray-500">
-            <a className="text-slate-200 text-lg" href="/tentangkami">
+            <a
+              className="text-lime-600 font-semibold text-lg"
+              href="/tentangkami">
               About
             </a>
           </li>
           <li className="p-1 border-b border-b-gray-500">
-            <a className="text-slate-200 text-lg" href="/gallery">
+            <a className="text-lime-600 font-semibold text-lg" href="/gallery">
               Running
             </a>
           </li>
           <li className="p-1 border-b border-b-gray-500">
-            <a className="text-slate-200 text-lg" href="/artikels">
+            <a className="text-lime-600 font-semibold text-lg" href="/artikels">
               Sneckers
-            </a>
-          </li>
-          <li className="p-1 border-b border-b-gray-500">
-            <a className="text-slate-200 text-lg" href="/kontak">
-              Formal
             </a>
           </li>
         </ul>

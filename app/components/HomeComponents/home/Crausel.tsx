@@ -13,35 +13,45 @@ import { EffectFlip } from "swiper/modules";
 
 export const Crausel = () => {
   return (
-    <div className=" absolute lg:top-[21rem] top-[22rem] left-[5rem] lg:left-[28rem]">
-      <Swiper
-        effect={"flip"}
-        grabCursor={true}
-        pagination={true}
-        modules={[EffectFlip]}
-        className="mySwiper w-[22rem] lg:w-[25rem] lg:h-[19rem] h-[17rem] lg:ms-5 ">
-        <SwiperSlide>
-          <img
-            src="/productheader/product1.png"
-            loading="lazy"
-            className=" w-[20rem] lg:w-[24rem]  lg:ms-0"
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img
-            src="/productheader/product2.png"
-            loading="lazy"
-            className=" w-[20rem] lg:w-[24rem]  lg:ms-0"
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img
-            src="/productheader/product3.png"
-            loading="lazy"
-            className=" w-[20rem] lg:w-[24rem]  lg:ms-0"
-          />
-        </SwiperSlide>
-      </Swiper>
+    <div className=" w-full  flex justify-center items-center ">
+      <div className=" absolute w-full lg:top-[22.3rem] top-[22rem] ">
+        <div className=" w-full flex justify-center items-center">
+          <Swiper
+            effect={"flip"}
+            grabCursor={true}
+            pagination={true}
+            modules={[EffectFlip]}
+            className="mySwiper w-[22rem] lg:w-[25rem] flex justify-center items-center lg:h-[19rem] h-[17rem] ">
+            <SwiperSlide>
+              <div className=" w-full flex justify-center items-center">
+                <img
+                  src="/productheader/product1.png"
+                  loading="lazy"
+                  className=" w-[18rem] lg:w-[22rem] ms-4 "
+                />
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className=" w-full flex justify-center items-center">
+                <img
+                  src="/productheader/product2.png"
+                  loading="lazy"
+                  className=" w-[18rem] lg:w-[22rem] ms-4"
+                />
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className=" w-full flex justify-center items-center">
+                <img
+                  src="/productheader/product3.png"
+                  loading="lazy"
+                  className=" w-[18rem] lg:w-[22rem] ms-4"
+                />
+              </div>
+            </SwiperSlide>
+          </Swiper>
+        </div>
+      </div>
     </div>
   );
 };

@@ -75,7 +75,7 @@ export const SearchNavbar: React.FC<PropsSearch> = ({
       {/* Search Input Form */}
       <form onSubmit={handleLinkPageDiscover}>
         <label
-          className={`input input-bordered flex w-full rounded-md items-center gap-2 ${
+          className={`input input-bordered z-50 flex w-full rounded-md items-center gap-2 ${
             !isSearch ? "hidden" : ""
           }`}>
           <input

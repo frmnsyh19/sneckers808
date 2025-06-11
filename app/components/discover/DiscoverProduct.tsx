@@ -39,9 +39,13 @@ export const DiscoverProduct = () => {
                 <Link
                   href={`/product/${items.produkid}`}
                   key={i}
-                  className=" w-48  lg:w-[17rem] shadow-2xl rounded-2xl flex flex-col">
+                  className=" w-[11rem] lg:h-fit h-[18.2rem] justify-between lg:justify-start lg:w-[17rem] shadow-2xl rounded-2xl flex flex-col">
                   <div className=" w-full">
-                    <img src={items.gallery[0]} alt="" />
+                    <img
+                      src={items.gallery[0]}
+                      className=" w-full lg:h-full h-40"
+                      alt=""
+                    />
                   </div>
                   <div className=" w-full flex flex-col p-3">
                     <p className="text-lg font-semibold">{items.produkname}</p>

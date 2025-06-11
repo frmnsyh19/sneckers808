@@ -217,6 +217,13 @@ export const CartNavbar = () => {
                 </div>
               ))}
             </div>
+            <div className="card-actions">
+              <Link href="/cart" className="w-full">
+                <button className="btn text-white btn-neutral btn-block">
+                  View cart
+                </button>
+              </Link>
+            </div>
           </div>
         </div>
       </div>

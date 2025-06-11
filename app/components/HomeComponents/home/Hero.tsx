@@ -11,7 +11,9 @@ export const Hero = () => {
       <div className="hero-overlay rounded-2xl  lg:h-[32rem]"></div>
       <div className="hero-content h-full flex justify-start items-start  flex-col gap-2 text-neutral-content text-center">
         <div className=" lg:w-[40rem] lg:mt-10 mt-4">
-          <h1 className="mb-5 text-6xl font-bold">Design & High Quality</h1>
+          <h1 className="mb-5 text-5xl lg:text-6xl font-bold">
+            Design & High Quality
+          </h1>
           <p className="mb-5 text-gray-400 text-center">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis
             eveniet eligendi, ipsum omnis amet adipisci.
