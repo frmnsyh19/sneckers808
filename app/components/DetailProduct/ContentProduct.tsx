@@ -5,6 +5,7 @@ import { Qty } from "./Qty";
 import { toast, ToastContainer } from "react-toastify";
 import { useAddToCart } from "@/libs/service/useAddToCart";
 import { useAppSelector } from "@/store/store";
+import { formatPrice } from "@/libs/helper/FormatPrice.";
 
 interface Category {
   categoryname: string;
@@ -50,10 +51,12 @@ export const ContentProduct: React.FC<PropsPage> = ({ product }) => {
         <p className=" text-3xl text-slate-800 font-bold">
           {product.produkname}
         </p>
-        <p className=" text-2xl capitalize text-gray-400">
+        <p className=" text-xl capitalize text-gray-400">
           {product.category.categoryname}
         </p>
-        <p className=" text-2xl text-red-500">{product.price}</p>
+        <p className="text-3xl font-bold text-red-500">
+          {formatPrice(product.price)}
+        </p>
       </div>
       <div className=" w-full flex flex-col gap-2">
         <div className=" w-full flex flex-col mt-2 gap-1">

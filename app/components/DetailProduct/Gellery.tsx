@@ -7,24 +7,20 @@ type Gellery = {
 export const Gellery: React.FC<Gellery> = ({ gallery }) => {
   const [isImage, setIsImage] = useState<string>("");
 
-  const handleChangeImage = (thisimage: string) => {
-    setIsImage(thisimage);
-  };
-
   console.log({ gallery });
 
   return (
     <div className=" w-full lg:w-[70%] flex h-full lg:flex-row flex-col-reverse gap-3 p-1 lg:p-3">
-      <div className=" w-full  lg:w-[8rem] p-2 h-full  flex flex-row gap-3 lg:flex-col ">
+      <div className=" w-full shadow border border-gray-300  lg:w-[8rem] p-2 h-full  flex flex-row gap-3 lg:flex-col ">
         {gallery
           ? gallery.map((items, i: number) => {
               return (
                 <div
                   key={i}
                   className={`w-20 shadow cursor-pointer ${
-                    isImage === items ? "" : ""
+                    isImage === items ? "border-2 border-lime-500" : ""
                   }`}
-                  onClick={() => handleChangeImage(items)}>
+                  onClick={() => setIsImage(items)}>
                   <img src={items} alt={`Gallery image ${i + 1}`} />
                 </div>
               );

@@ -34,7 +34,6 @@ export const useHookFormikCreateProduct = ({
       if (!uploadImage.success) {
         return toast.error(uploadImage.message!);
       }
-
       mutate({
         categoryid,
         produkname,

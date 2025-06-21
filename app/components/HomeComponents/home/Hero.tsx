@@ -15,8 +15,8 @@ export const Hero = () => {
             Design & High Quality
           </h1>
           <p className="mb-5 text-gray-400 text-center">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis
-            eveniet eligendi, ipsum omnis amet adipisci.
+            These sneakers feature exceptional design and top-quality
+            craftsmanship, offering both comfort and style with every step.
           </p>
           <div className=" w-full justify-center items-center flex gap-2">
             <button className=" btn bg-lime-600 border-none text-white">
