@@ -78,7 +78,7 @@ export const OurProduct = () => {
             </select>
           </div>
         </div>
-        <div className="w-full justify-center items-center flex gap-2 flex-wrap">
+        <div className="w-full justify-start lg:justify-center items-center flex lg:gap-2 gap-3 flex-wrap">
           {product
             ? product.datas.map((items: Products, i: number) => {
                 return (

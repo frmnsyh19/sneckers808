@@ -7,7 +7,7 @@ type initialstateType = {
 
 const initialState: initialstateType = {
   size: "",
-  qty: 0,
+  qty: 1,
 };
 
 const OurProductSlice = createSlice({
@@ -15,7 +15,11 @@ const OurProductSlice = createSlice({
   initialState,
   reducers: {
     addOurProductState: (state, actions) => {
-      state.qty = actions.payload.qty;
+      if (!actions.payload.qty) {
+        state.qty = 1;
+      } else {
+        state.qty = actions.payload.qty;
+      }
       state.size = actions.payload.size;
     },
   },
