@@ -30,7 +30,7 @@ export const NewArrival = () => {
 
         <div className=" w-full p-4">
           <Swiper
-            className=" w-full p-2 lg:h-[24.2rem] bg-white"
+            className=" w-full p-2 h-[26.2rem]  lg:h-[24.2rem] bg-white"
             spaceBetween={18}
             breakpoints={{
               0: {
