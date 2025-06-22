@@ -23,12 +23,12 @@ export const NewArrival = () => {
   return (
     <div className=" w-full flex justify-center items-center flex-col gap-2">
       <div className="w-[90%] flex flex-col gap-2">
-        <div className=" w-full flex justify-between p-3 lg:p-6">
+        <div className=" w-full flex justify-between p-1 lg:p-6">
           <p className=" text-3xl font-bold  ">New Arrival</p>
           <a className="btn rounded-3xl show btn-neutral">show</a>
         </div>
 
-        <div className=" w-full p-4">
+        <div className=" w-full p-2">
           <Swiper
             className=" w-full p-2 h-[27.2rem]  lg:h-[24.2rem] bg-white"
             spaceBetween={18}

@@ -12,7 +12,7 @@ export const HeaderCategoryProduct = () => {
           />
           <div className=" w-full flex flex-col justify-center items-center ">
             <p className=" text-xl uppercase font-bold">Sneckers</p>
-            <p className=" text-lg text-gray-400">
+            <p className=" text-lg text-gray-400 text-wrap text-center">
               Unleash your stride with comfort and bold style
             </p>
             <a

@@ -32,14 +32,14 @@ export const DiscoverProduct = () => {
 
   return (
     <>
-      <div className="w-full justify-center items-center flex gap-3 flex-wrap">
+      <div className="w-full justify-center items-center flex gap-2 lg:gap-3 flex-wrap">
         {product
           ? product.map((items: Products, i: number) => {
               return (
                 <Link
                   href={`/product/${items.produkid}`}
                   key={i}
-                  className=" w-[11rem] lg:h-fit h-[18.2rem] justify-between lg:justify-start lg:w-[17rem] shadow-2xl rounded-2xl flex flex-col">
+                  className=" w-[48%] lg:h-fit h-[18.2rem] justify-between lg:justify-start lg:w-[17rem] shadow-2xl rounded-2xl flex flex-col">
                   <div className=" w-full">
                     <img
                       src={items.gallery[0]}

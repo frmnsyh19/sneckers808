@@ -78,14 +78,14 @@ export const OurProduct = () => {
             </select>
           </div>
         </div>
-        <div className="w-full justify-start lg:justify-center items-center flex lg:gap-2 gap-3 flex-wrap">
+        <div className="w-full justify-start lg:justify-center items-center flex lg:gap-2 gap-2 flex-wrap">
           {product
             ? product.datas.map((items: Products, i: number) => {
                 return (
                   <Link
                     href={`/product/${items.produkid}`}
                     key={i}
-                    className=" w-[11rem] card lg:h-fit h-[18.2rem] justify-between lg:justify-start lg:w-[17rem] shadow-2xl  flex flex-col">
+                    className=" w-[47%] card lg:h-fit h-[18.2rem] justify-between lg:justify-start lg:w-[17rem] shadow-2xl  flex flex-col">
                     <div className=" w-full">
                       <img
                         src={items.gallery[0]}
