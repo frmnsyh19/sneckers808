@@ -89,7 +89,7 @@ export const OurProduct = () => {
                     <div className=" w-full">
                       <img
                         src={items.gallery[0]}
-                        className=" w-full lg:h-full h-40"
+                        className=" w-full rounded-2xl lg:h-full h-40"
                         alt=""
                       />
                     </div>
