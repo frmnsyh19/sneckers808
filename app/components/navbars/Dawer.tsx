@@ -39,20 +39,8 @@ export const Dawer = () => {
             </a>
           </li>
           <li className="p-1 border-b border-b-gray-500">
-            <a
-              className="text-lime-600 font-semibold text-lg"
-              href="/tentangkami">
-              About
-            </a>
-          </li>
-          <li className="p-1 border-b border-b-gray-500">
-            <a className="text-lime-600 font-semibold text-lg" href="/gallery">
-              Running
-            </a>
-          </li>
-          <li className="p-1 border-b border-b-gray-500">
-            <a className="text-lime-600 font-semibold text-lg" href="/artikels">
-              Sneckers
+            <a className="text-lime-600 font-semibold text-lg" href="/discover">
+              Discover
             </a>
           </li>
         </ul>

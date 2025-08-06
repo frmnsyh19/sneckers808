@@ -54,7 +54,7 @@ export const ContentProduct: React.FC<PropsPage> = ({ product }) => {
         <p className=" text-xl capitalize text-gray-400">
           {product.category.categoryname}
         </p>
-        <p className="text-3xl font-bold text-red-500">
+        <p className="text-3xl font-bold text-neutral">
           {formatPrice(product.price)}
         </p>
       </div>

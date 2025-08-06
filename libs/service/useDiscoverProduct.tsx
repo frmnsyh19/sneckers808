@@ -5,7 +5,7 @@ import axios from "axios";
 
 type ParamsDiscover = {
   query: string;
-  category: string;
+  category: string | number;
   sort: string;
 };
 

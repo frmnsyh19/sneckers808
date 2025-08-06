@@ -1,65 +1,33 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 import { useAppSelector } from "@/store/store";
 import { FilterProduct } from "./FilterProduct";
-import { useDispatch } from "react-redux";
-import { addSetDiscoverProduct } from "@/features/DiscoverSliders";
 import { DiscoverProduct } from "./DiscoverProduct";
 
 export const ClientDiscover = () => {
-  const [sort, setSort] = useState<string>("");
+  // ambil redux props discover
 
-  const discoverProps = useAppSelector((state) => state.discover);
-
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    if (sort) {
-      dispatch(addSetDiscoverProduct({ sort }));
-    }
-  }, [dispatch, sort]);
-
-  console.log(discoverProps);
+  const { query } = useAppSelector((state) => state.discover);
 
   return (
     <>
-      <div className=" lg:w-[90%] w-full flex flex-col gap-5 lg:gap-24 justify-center items-center p-1 lg:p-3">
+      <div className=" lg:w-[90%] w-full flex flex-col gap-2 lg:gap-3 justify-center items-center p-1 lg:p-3">
         {/* <SearchDiscover setQuery={setQuery} /> */}
-        <div className=" w-full flex flex-col gap-3">
-          <div className=" w-full flex justify-between items-center">
-            <p className=" text-xl font-bold">
-              Pencarian Terakhir{" "}
-              {`"${discoverProps.query ? discoverProps.query : ""}"`}
-            </p>
-            <select
-              defaultValue="Pick a color"
-              className="select lg:flex hidden"
-              onChange={(e) => setSort(e.target.value)}>
-              <option disabled={true}>Sort</option>
-              <option value="new">Newlest</option>
-              <option value="old">Oldlest</option>
-              <option value="high">High Price</option>
-              <option value="low">Low Price</option>
-            </select>
+        <main className=" w-full flex justify-center items-center ">
+          <div className=" w-full lg:h-[30rem] flex justify-center items-center">
+            <img src="/bgdiscover.png" className=" w-full h-full" alt="" />
           </div>
-          <div className=" w-full flex  flex-col gap-4 lg:gap-2 lg:flex-row mt-4 lg:mt-11 ">
-            <FilterProduct />
-            <div className=" w-full flex lg:hidden">
-              <select
-                defaultValue="Pick a color"
-                className="select lg:hidden w-full"
-                onChange={(e) => setSort(e.target.value)}>
-                <option disabled={true}>Sort</option>
-                <option value="new">Newlest</option>
-                <option value="old">Oldlest</option>
-                <option value="high">High Price</option>
-                <option value="low">Low Price</option>
-              </select>
-            </div>
-            <DiscoverProduct />
-          </div>
+        </main>
+        <div className="w-full p-3 lg:p-5 flex justify-start">
+          <p className="text-lg lg:text-2xl font-bold">
+            Pencarian {`"${query}"`}
+          </p>
+        </div>
+        <div className=" w-full flex flex-col lg:flex-row lg:gap-3">
+          <FilterProduct />
+          <DiscoverProduct />
         </div>
       </div>
     </>

@@ -16,7 +16,10 @@ export const Navbar = () => {
 
   return (
     <>
-      <div className={` w-full flex justify-center shadow-md items-center `}>
+      <div
+        className={` w-full flex justify-center ${
+          isSearch ? "fixed z-50 top-0 left-0 bg-white" : ""
+        } shadow-md items-center `}>
         <ToastContainer />
         <div className="w-full lg:w-[95%] navbar ">
           <div className="navbar-start flex gap-2">

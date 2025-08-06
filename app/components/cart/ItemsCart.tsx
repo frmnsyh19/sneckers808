@@ -62,7 +62,7 @@ export const ItemsCart = () => {
     if (SuccessUpdateCart) {
       router.push("/checkout");
     }
-  }, [SuccessUpdateCart]);
+  }, []);
 
   useEffect(() => {
     if (data) {

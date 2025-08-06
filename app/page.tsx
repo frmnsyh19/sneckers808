@@ -12,15 +12,15 @@ import { Navbar } from "./components/navbars/Navbar";
 
 export default function Home() {
   return (
-    <div className=" w-full flex flex-col justify-center gap-4 h-full items-center ">
+    <div className=" w-full flex flex-col justify-center h-full items-center ">
       <Navbar />
-      <div className=" w-full  flex justify-center items-center rounded-2xl">
+      <div className=" w-full gap-11 flex-col  flex justify-center items-center">
         <Hero />
+        <TopBrands />
+        <HeaderCategoryProduct />
+        <NewArrival />
+        <OurProduct />
       </div>
-      <TopBrands />
-      <HeaderCategoryProduct />
-      <NewArrival />
-      <OurProduct />
     </div>
   );
 }

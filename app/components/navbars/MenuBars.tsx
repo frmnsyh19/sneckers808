@@ -1,6 +1,7 @@
 "use client";
 
 import { addSetDiscoverProduct } from "@/features/DiscoverSliders";
+import Link from "next/link";
 
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
@@ -26,7 +27,9 @@ export const MenuBars = () => {
         <a className=" text-lg">Home</a>
       </li>
       <li>
-        <a className=" text-lg">Discover</a>
+        <Link href={"/discover"} className=" text-lg">
+          Discover
+        </Link>
       </li>
       <li>
         <a className="text-lg">About</a>

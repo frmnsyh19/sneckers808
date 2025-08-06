@@ -4,13 +4,15 @@ type dataDiscover = {
   query: string;
   search: string;
   sort: string;
-  category: string;
+  default: boolean;
+  category: string | number;
 };
 
 const Initialstate: dataDiscover = {
   query: "",
   search: "",
   category: "",
+  default: true,
   sort: "",
 };
 
@@ -26,8 +28,18 @@ const DiscoverSliders = createSlice({
       if (category !== undefined) state.category = category;
       if (sort !== undefined) state.sort = sort;
     },
+    addSetModeLayouts: (state, action) => {
+      const { mode } = action.payload;
+
+      if (mode === true) {
+        state.default = true;
+      } else {
+        state.default = false;
+      }
+    },
   },
 });
 
-export const { addSetDiscoverProduct } = DiscoverSliders.actions;
+export const { addSetDiscoverProduct, addSetModeLayouts } =
+  DiscoverSliders.actions;
 export const DiscoverSlidersReducer = DiscoverSliders.reducer;

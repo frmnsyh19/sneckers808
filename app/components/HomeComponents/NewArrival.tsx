@@ -28,9 +28,9 @@ export const NewArrival = () => {
           <a className="btn rounded-3xl show btn-neutral">show</a>
         </div>
 
-        <div className=" w-full p-2">
+        <div className=" w-full p-1">
           <Swiper
-            className=" w-full p-2 h-[27.2rem]  lg:h-[24.2rem] bg-white"
+            className=" w-full p-1 h-[30rem]  lg:h-[24.2rem] bg-white"
             spaceBetween={18}
             breakpoints={{
               0: {
@@ -47,7 +47,7 @@ export const NewArrival = () => {
               ? data.datas.map((items: Product, i: number) => {
                   return (
                     <SwiperSlide key={i}>
-                      <div className=" w-full lg:card justify-between lg:w-[16.5rem] h-[27rem] lg:h-[24rem] shadow  flex flex-col">
+                      <div className=" w-full lg:card justify-between lg:w-[16.5rem] lg:h-[24rem] shadow  flex flex-col">
                         <div className=" lg:h-40 w-full">
                           <img src={items.gallery[0]} alt="" />
                         </div>

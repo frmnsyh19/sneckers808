@@ -37,7 +37,7 @@ export const Size = () => {
               key={i}
               onClick={() => handleSizeSelect(i, items.size)}
               className={`btn btn-sm rounded-md   ${
-                selectSize == i ? " btn-neutral" : "btn-outline"
+                selectSize == i ? "bg-lime-400 text-white" : "btn-outline"
               }`}>
               {items.size}
             </div>

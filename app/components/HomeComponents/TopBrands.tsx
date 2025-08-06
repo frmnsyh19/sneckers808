@@ -5,7 +5,7 @@ import React from "react";
 export const TopBrands = () => {
   return (
     <>
-      <div className=" w-full flex flex-col h-[20rem] justify-center items-center">
+      <div className=" w-full flex flex-col h-[17rem] lg:h-[20rem] justify-center items-center">
         <div className=" w-full lg:w-10/12 flex flex-col gap-2">
           <p className=" text-2xl font-bold text-center">Top Brands</p>
           <p className=" text-base text-center">

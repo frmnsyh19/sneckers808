@@ -11,7 +11,24 @@ type CateType = {
 };
 
 export const FilterProduct = () => {
-  const [checkedCategory, setCheckedCategory] = useState<string | null>("");
+  const [checkedCategory, setCheckedCategory] = useState<
+    string | null | number
+  >("");
+
+  const [mobile, setMobile] = useState<boolean>(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setMobile(window.innerWidth < 768);
+    };
+
+    handleResize(); // cek saat komponen pertama kali mount
+    window.addEventListener("resize", handleResize); // update saat resize
+
+    return () => {
+      window.removeEventListener("resize", handleResize); // cleanup
+    };
+  }, []); // hanya jalan sekali saat mount
 
   const dispatch = useDispatch();
 
@@ -23,43 +40,71 @@ export const FilterProduct = () => {
 
   const { data: category } = useGetCategory();
 
-  const handleCheckedCategory = (name: string | null) => {
-    setCheckedCategory((prev) => (prev == name ? null : name));
+  const handleCheckedCategory = (name: string | null | number) => {
+    setCheckedCategory(name);
   };
 
   return (
-    <div className=" lg:w-64  p-4 h-fit rounded-2xl shadow-2xl w-full overflow-x-scroll lg:overflow-auto flex-row lg:flex-col">
-      <div className=" w-full flex flex-col gap-3">
-        <p className=" text-lg font-semibold">By Category</p>
-        <div className=" w-full flex flex-col gap-4">
-          <label className="flex gap-1 cursor-pointer">
-            <input
-              type="checkbox"
-              className="checkbox"
-              checked={checkedCategory === null}
-              onChange={() => handleCheckedCategory(null)}
-            />
-            <span className="text-base capitalize">All Items</span>
-          </label>
-          {category
-            ? category.map((cate: CateType) => {
-                return (
-                  <label key={cate.id} className="flex gap-1 cursor-pointer">
-                    <input
-                      type="checkbox"
-                      className="checkbox"
-                      checked={checkedCategory === cate.categoryname}
-                      onChange={() => handleCheckedCategory(cate.categoryname)}
-                    />
-                    <span className="text-base capitalize">
-                      {cate.categoryname}
-                    </span>
-                  </label>
-                );
-              })
-            : ""}
+    <div className=" lg:w-[18rem] p-2 lg:p-4 h-fit    w-full  lg:overflow-auto flex-row lg:flex-col">
+      <div className=" w-full flex overflow-x-auto flex-row lg:flex-col gap-2">
+        <div className=" w-full p-2 hidden lg:block">
+          <p className=" text-xl font-bold">Categories</p>
         </div>
+        <div
+          onClick={() => handleCheckedCategory("all")}
+          className={`${
+            mobile
+              ? `btn btn-sm rounded-3xl ${
+                  checkedCategory === "all"
+                    ? "bg-lime-400 text-white"
+                    : "bg-base-300"
+                }`
+              : `lg:w-full lg:p-1 lg:flex lg:items-center lg:gap-1 lg:border-b lg:border-b-gray-200 ${
+                  checkedCategory === "all"
+                    ? "lg:border-l-5 lg:border-l-lime-400"
+                    : ""
+                }`
+          }`}>
+          <p className="text-base capitalize lg:block hidden">{`>`}</p>
+          <p className="lg:text-lg text-base capitalize">All Items</p>
+        </div>
+        {category
+          ? category.map((items: CateType, i: number) => {
+              return (
+                <div
+                  onClick={() => handleCheckedCategory(items.id)}
+                  className={`${
+                    mobile
+                      ? `btn btn-sm rounded-3xl ${
+                          checkedCategory === items.id
+                            ? "bg-lime-400 text-white"
+                            : "bg-base-300"
+                        }`
+                      : `lg:w-full lg:p-1 lg:flex lg:items-center lg:gap-1 lg:border-b lg:border-b-gray-200 ${
+                          checkedCategory === items.id
+                            ? "lg:border-l-5 lg:border-l-lime-400"
+                            : ""
+                        }
+`
+                  }`}
+                  key={i}>
+                  <p className="text-base capitalize lg:block hidden">{`>`}</p>
+                  <p className=" text-base lg:text-lg capitalize">
+                    {items.categoryname}
+                  </p>
+                </div>
+              );
+            })
+          : ""}
       </div>
     </div>
   );
 };
+
+// {
+//   `btn btn-sm rounded-3xl bg-base-200 lg:w-full lg:p-1 lg:flex lg:items-center lg:gap-1 lg:border-b lg:border-b-gray-200 ${
+//     checkedCategory === items.id
+//       ? "lg:border-l-5 md:bg-orange-600 md:text-white lg:border-l-orange-600"
+//       : ""
+//   }`;
+// }
