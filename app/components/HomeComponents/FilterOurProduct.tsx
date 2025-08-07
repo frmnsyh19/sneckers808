@@ -62,7 +62,7 @@ export const FilterOurProduct = ({
           className="select select-bordered rounded-full lg:w-fit w-24">
           <option value="">Sort By</option>
           <option value="new">Newest</option>
-          <option value="lastes">Oldest</option>
+          <option value="oldest">Oldest</option>
           <option value="high">High</option>
           <option value="low">Low</option>
         </select>
