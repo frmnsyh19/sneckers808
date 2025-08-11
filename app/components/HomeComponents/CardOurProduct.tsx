@@ -23,7 +23,7 @@ export const CardOurProduct = ({ product }: { product: Products[] }) => {
               <Link
                 href={`/product/${items.produkid}`}
                 key={i}
-                className=" w-[48%] lg:h-fit h-[18.2rem] justify-between lg:justify-start lg:w-[17rem] shadow-2xl  flex flex-col">
+                className=" w-[48%] lg:h-[24rem] h-[18.2rem] justify-between lg:justify-start lg:w-[17rem] shadow-2xl  flex flex-col">
                 <div className=" w-full">
                   <img
                     src={items.gallery[0]}
